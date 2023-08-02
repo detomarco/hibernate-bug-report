@@ -19,11 +19,11 @@ class JPAUnitTestCase {
     fun beforeAll() {
 
         if (!initdb) {
-            initdb = !initdb
+            initdb = true
 
             val entityManagerFactory = Persistence.createEntityManagerFactory("templatePU")
             entityManager = entityManagerFactory!!.createEntityManager()
-            entityManager.getTransaction().begin()
+            entityManager.transaction.begin()
 
             entityManager.createNativeQuery(
                 """
@@ -43,7 +43,7 @@ class JPAUnitTestCase {
             """.trimIndent()
             ).executeUpdate()
 
-            entityManager.getTransaction().commit()
+            entityManager.transaction.commit()
 
         }
 
@@ -52,23 +52,22 @@ class JPAUnitTestCase {
     @Test
     fun javaOK() {
 
-
-        val loadedEntityA: CarJava =
+        val entityJava: CarJava =
             entityManager.createQuery("FROM VehicleJava WHERE brand = 'Audi'", CarJava::class.java)
                 .resultList.first()
 
-        assertNotNull(loadedEntityA)
-        assertNotNull(loadedEntityA.id)
+        assertNotNull(entityJava)
+        assertNotNull(entityJava.id)
     }
 
     @Test
     fun kotlinKO() {
 
-        val loadedEntityA: CarKotlin =
+        val entityKotlin: CarKotlin =
             entityManager.createQuery("FROM VehicleKotlin WHERE brand = 'Audi'", CarKotlin::class.java)
                 .resultList.first()
 
-        assertNotNull(loadedEntityA)
-        assertNotNull(loadedEntityA.id)
+        assertNotNull(entityKotlin)
+        assertNotNull(entityKotlin.id)
     }
 }
