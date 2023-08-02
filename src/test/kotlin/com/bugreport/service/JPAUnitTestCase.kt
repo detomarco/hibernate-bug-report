@@ -8,11 +8,7 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-/**
- * This template demonstrates how to develop a test case for Hibernate ORM, using the Java Persistence API.
- */
 class JPAUnitTestCase {
-
 
     companion object {
         private lateinit var entityManager: EntityManager
@@ -53,14 +49,10 @@ class JPAUnitTestCase {
 
     }
 
-
-    // Entities are auto-discovered, so just add them anywhere on class-path
-    // Add your tests, using standard JUnit.
     @Test
-    fun java() {
+    fun javaOK() {
 
 
-        // This call works, because we use the concrete subclass in the query
         val loadedEntityA: CarJava =
             entityManager.createQuery("FROM VehicleJava WHERE brand = 'Audi'", CarJava::class.java)
                 .resultList.first()
@@ -70,9 +62,8 @@ class JPAUnitTestCase {
     }
 
     @Test
-    fun kotlin() {
+    fun kotlinKO() {
 
-        // This call works, because we use the concrete subclass in the query
         val loadedEntityA: CarKotlin =
             entityManager.createQuery("FROM VehicleKotlin WHERE brand = 'Audi'", CarKotlin::class.java)
                 .resultList.first()
