@@ -53,7 +53,7 @@ class JPAUnitTestCase {
     fun javaOK() {
 
         val entityJava: CarJava =
-            entityManager.createQuery("FROM VehicleJava WHERE brand = 'Audi'", CarJava::class.java)
+            entityManager.createQuery("FROM CarJava WHERE brand = 'Audi'", CarJava::class.java)
                 .resultList.first()
 
         assertNotNull(entityJava)
@@ -64,7 +64,7 @@ class JPAUnitTestCase {
     fun kotlinKO() {
 
         val entityKotlin: CarKotlin =
-            entityManager.createQuery("FROM VehicleKotlin WHERE brand = 'Audi'", CarKotlin::class.java)
+            entityManager.createQuery("FROM CarKotlin WHERE brand = 'Audi'", CarKotlin::class.java)
                 .resultList.first()
 
         assertNotNull(entityKotlin)
