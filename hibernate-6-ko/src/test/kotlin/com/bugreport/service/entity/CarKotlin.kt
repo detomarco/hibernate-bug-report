@@ -1,18 +1,15 @@
 package com.bugreport.service.entity
 
-import jakarta.persistence.Column
 import jakarta.persistence.DiscriminatorValue
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
-import java.util.*
+import java.util.UUID
 
 @Entity
 @DiscriminatorValue("CAR")
 data class CarKotlin(
     @Id override var id: UUID,
-    override var brand: String,
-    @Column(name = "is_car")
-    val isCar: Boolean
+    override var brand: String
 ) : VehicleKotlin(
     id = id,
     brand = brand,

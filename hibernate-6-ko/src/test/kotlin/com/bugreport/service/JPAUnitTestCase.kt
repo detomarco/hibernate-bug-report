@@ -5,6 +5,7 @@ import jakarta.persistence.Persistence
 import com.bugreport.service.entity.CarJava
 import com.bugreport.service.entity.CarKotlin
 import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -52,21 +53,21 @@ class JPAUnitTestCase {
     @Test
     fun javaOK() {
 
-        val entityJava: CarJava =
-            entityManager.createQuery("FROM CarJava WHERE brand = 'Audi'", CarJava::class.java)
-                .resultList.first()
+        val entityJava =
+            entityManager.createQuery("FROM CarJava WHERE brand = 'Audi'", CarJava::class.java).resultList.first()
 
+        assertTrue(entityJava is CarJava)
         assertNotNull(entityJava)
         assertNotNull(entityJava.id)
     }
 
     @Test
     fun kotlinKO() {
-
-        val entityKotlin: CarKotlin =
+        val entityKotlin =
             entityManager.createQuery("FROM CarKotlin WHERE brand = 'Audi'", CarKotlin::class.java)
                 .resultList.first()
 
+        assertTrue(entityKotlin is CarKotlin)
         assertNotNull(entityKotlin)
         assertNotNull(entityKotlin.id)
     }
