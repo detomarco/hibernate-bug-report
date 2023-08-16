@@ -11,9 +11,7 @@
 		<java.version>17</java.version>
 		<kotlin.version>1.9.0</kotlin.version>
 		<version.com.h2database>2.2.220</version.com.h2database>
-		<version.org.hibernate>6.2.7.Final</version.org.hibernate>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<version.org.hibernate>6.3.0.CR1</version.org.hibernate>
 	</properties>
 	<dependencies>
 		<dependency>

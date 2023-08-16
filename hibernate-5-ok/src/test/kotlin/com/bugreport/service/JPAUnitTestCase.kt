@@ -61,7 +61,7 @@ class JPAUnitTestCase {
     }
 
     @Test
-    fun kotlinKO() {
+    fun kotlinOK() {
 
         val entityKotlin = entityManager
             .createQuery("FROM CarKotlin WHERE brand = 'Audi'", CarKotlin::class.java)
